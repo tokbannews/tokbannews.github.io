@@ -304,8 +304,9 @@ function createTimelineItem(item) {
         itemDiv.classList.add('missed');
     }
     
-    // Format date
-    const date = new Date(item.date);
+    // Format date - parse components to avoid timezone issues
+    const [year, month, day] = item.date.split('-');
+    const date = new Date(year, month - 1, day); // month is 0-indexed
     const formattedDate = date.toLocaleDateString('en-US', { 
         year: 'numeric', 
         month: 'short', 
@@ -316,10 +317,13 @@ function createTimelineItem(item) {
     const statusClass = item.status.toLowerCase();
     const statusBadge = `<span class="timeline-status ${statusClass}">${item.status}</span>`;
     
+    // Create link if present
+    const linkHtml = item.link ? ` <a href="${item.link}" class="timeline-link" target="_blank" rel="noopener noreferrer">[Link]</a>` : '';
+    
     itemDiv.innerHTML = `
         <div class="timeline-date">${formattedDate}</div>
         <div class="timeline-description">
-            ${item.description}
+            ${item.description}${linkHtml}
             ${statusBadge}
         </div>
     `;

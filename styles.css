@@ -92,12 +92,20 @@ header h1 {
     font-size: 16px;
     font-weight: 700;
     color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.timeline-subtitle {
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 0;
 }
 
 .timeline-toggle {
     position: absolute;
     right: 0;
-    top: 50%;
+    top: calc(50% - 20px);
     transform: translateY(-50%);
     background: transparent;
     border: none;
@@ -180,6 +188,20 @@ header h1 {
 .timeline-item.missed .timeline-date {
     color: var(--text-meta);
     opacity: 0.7;
+}
+
+.timeline-link {
+    font-size: 11px;
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    cursor: pointer;
+}
+
+.timeline-link:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
 }
 
 .timeline-status {
