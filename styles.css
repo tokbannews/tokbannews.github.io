@@ -6,7 +6,7 @@
 }
 
 :root {
-    --bg-primary: #fffbf0;
+    --bg-primary: #FFFFC2;
     --bg-card: #ffffff;
     --bg-card-hover: #fffef8;
     --text-primary: #333333;
@@ -88,11 +88,19 @@ header h1 {
     position: relative;
 }
 
+.timeline-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
 .timeline-header h2 {
     font-size: 16px;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 4px;
+    margin: 0;
 }
 
 .timeline-subtitle {
@@ -132,7 +140,7 @@ header h1 {
 .countdown-value {
     font-weight: 700;
     font-size: 14px;
-    color: var(--text-primary);
+    color: #000000;
     min-width: 20px;
     text-align: center;
 }
@@ -143,10 +151,6 @@ header h1 {
 }
 
 .timeline-toggle {
-    position: absolute;
-    right: 0;
-    top: calc(50% - 20px);
-    transform: translateY(-50%);
     background: transparent;
     border: none;
     cursor: pointer;
@@ -157,6 +161,7 @@ header h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .timeline-toggle:hover {

@@ -18,7 +18,14 @@
         <!-- Timeline Card -->
         <section class="timeline-card" id="timeline-card">
             <div class="timeline-header">
-                <h2>TikTok Ban Timeline</h2>
+                <div class="timeline-title-row">
+                    <h2>TikTok Ban Timeline</h2>
+                    <button class="timeline-toggle" id="timeline-toggle" aria-label="Toggle timeline">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
                 <p class="timeline-subtitle">A 79 year old felon dumping on an 81 year old.</p>
                 <div class="countdown-container">
                     <span class="countdown-label">Donald's days left</span>
@@ -42,11 +49,6 @@
                     </div>
                     <span class="countdown-label">to the TikTok wreck : 12/16/25</span>
                 </div>
-                <button class="timeline-toggle" id="timeline-toggle" aria-label="Toggle timeline">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
             </div>
             <div class="timeline-content" id="timeline-content">
                 <!-- Timeline items will be dynamically loaded here -->
@@ -101,8 +103,6 @@
                     <a href="#terms">Terms</a>
                     <span class="separator">•</span>
                     <a href="#contact">Contact</a>
-                    <span class="separator">•</span>
-                    <a href="#api">API</a>
                 </div>
                 <div class="footer-social">
                     <a href="#twitter" aria-label="Twitter">𝕏</a>
