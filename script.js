@@ -1,4 +1,5 @@
 // Tips will be loaded from tips.json
+// Timeline will be loaded from timeline.json
 
 // Tool icons will be assigned automatically based on tool type
 const toolIcons = ["📥", "⬇️", "💾", "🎬", "📹", "🔗", "🎥", "📲", "🎞️", "🎯"];
@@ -268,9 +269,91 @@ function formatDate(dateString) {
     }
 }
 
+// Load and display timeline
+async function loadTimeline() {
+    try {
+        const response = await fetch('timeline.json');
+        const timeline = await response.json();
+        
+        const timelineContent = document.getElementById('timeline-content');
+        
+        if (timeline.length === 0) {
+            timelineContent.innerHTML = '<div class="empty-state">No timeline data available</div>';
+            return;
+        }
+        
+        timeline.forEach(item => {
+            const timelineItem = createTimelineItem(item);
+            timelineContent.appendChild(timelineItem);
+        });
+        
+    } catch (error) {
+        console.error('Error loading timeline:', error);
+        document.getElementById('timeline-content').innerHTML = 
+            '<div class="empty-state">Error loading timeline</div>';
+    }
+}
+
+// Create timeline item element
+function createTimelineItem(item) {
+    const itemDiv = document.createElement('div');
+    itemDiv.className = 'timeline-item';
+    
+    // Add 'missed' class if status is Missed
+    if (item.status.toLowerCase() === 'missed') {
+        itemDiv.classList.add('missed');
+    }
+    
+    // Format date
+    const date = new Date(item.date);
+    const formattedDate = date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'short', 
+        day: 'numeric' 
+    });
+    
+    // Create status badge
+    const statusClass = item.status.toLowerCase();
+    const statusBadge = `<span class="timeline-status ${statusClass}">${item.status}</span>`;
+    
+    itemDiv.innerHTML = `
+        <div class="timeline-date">${formattedDate}</div>
+        <div class="timeline-description">
+            ${item.description}
+            ${statusBadge}
+        </div>
+    `;
+    
+    return itemDiv;
+}
+
+// Toggle timeline expand/collapse
+function initTimelineToggle() {
+    const timelineCard = document.getElementById('timeline-card');
+    const toggleBtn = document.getElementById('timeline-toggle');
+    
+    if (toggleBtn && timelineCard) {
+        toggleBtn.addEventListener('click', () => {
+            timelineCard.classList.toggle('collapsed');
+            
+            // Save state to localStorage
+            const isCollapsed = timelineCard.classList.contains('collapsed');
+            localStorage.setItem('timelineCollapsed', isCollapsed);
+        });
+        
+        // Restore previous state from localStorage
+        const savedState = localStorage.getItem('timelineCollapsed');
+        if (savedState === 'true') {
+            timelineCard.classList.add('collapsed');
+        }
+    }
+}
+
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
+    loadTimeline();
     loadArticles();
     loadTechnicalTips();
     loadDeveloperTools();
+    initTimelineToggle();
 });
