@@ -331,6 +331,36 @@ function createTimelineItem(item) {
     return itemDiv;
 }
 
+// Countdown timer
+function updateCountdown() {
+    const targetDate = new Date('2025-12-16T00:00:00').getTime();
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+    
+    if (distance < 0) {
+        document.getElementById('days').textContent = '0';
+        document.getElementById('hours').textContent = '0';
+        document.getElementById('mins').textContent = '0';
+        document.getElementById('secs').textContent = '0';
+        return;
+    }
+    
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('mins').textContent = mins;
+    document.getElementById('secs').textContent = secs;
+}
+
+function initCountdown() {
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+}
+
 // Toggle timeline expand/collapse
 function initTimelineToggle() {
     const timelineCard = document.getElementById('timeline-card');
@@ -360,4 +390,5 @@ document.addEventListener('DOMContentLoaded', () => {
     loadTechnicalTips();
     loadDeveloperTools();
     initTimelineToggle();
+    initCountdown();
 });

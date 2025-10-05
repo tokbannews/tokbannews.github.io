@@ -102,6 +102,46 @@ header h1 {
     margin: 0;
 }
 
+.countdown-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 11px;
+    flex-wrap: wrap;
+}
+
+.countdown-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.countdown-timer {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.countdown-segment {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+
+.countdown-value {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-primary);
+    min-width: 20px;
+    text-align: center;
+}
+
+.countdown-unit {
+    font-size: 10px;
+    color: var(--text-meta);
+}
+
 .timeline-toggle {
     position: absolute;
     right: 0;
@@ -692,6 +732,24 @@ footer {
         width: 14px;
         height: 14px;
     }
+    
+    .countdown-container {
+        font-size: 10px;
+        gap: 4px;
+    }
+    
+    .countdown-value {
+        font-size: 12px;
+        min-width: 18px;
+    }
+    
+    .countdown-unit {
+        font-size: 9px;
+    }
+    
+    .countdown-timer {
+        gap: 6px;
+    }
 }
 
 @media (max-width: 640px) {
@@ -734,6 +792,25 @@ footer {
     .timeline-toggle svg {
         width: 13px;
         height: 13px;
+    }
+    
+    .countdown-container {
+        font-size: 9px;
+        gap: 3px;
+        margin-top: 6px;
+    }
+    
+    .countdown-value {
+        font-size: 11px;
+        min-width: 16px;
+    }
+    
+    .countdown-unit {
+        font-size: 8px;
+    }
+    
+    .countdown-timer {
+        gap: 5px;
     }
     
     .timeline-item {
@@ -853,6 +930,26 @@ footer {
     .timeline-toggle svg {
         width: 12px;
         height: 12px;
+    }
+    
+    .countdown-container {
+        font-size: 8px;
+        gap: 2px;
+        margin-top: 5px;
+        flex-wrap: wrap;
+    }
+    
+    .countdown-value {
+        font-size: 10px;
+        min-width: 14px;
+    }
+    
+    .countdown-unit {
+        font-size: 7px;
+    }
+    
+    .countdown-timer {
+        gap: 4px;
     }
     
     .timeline-content {
